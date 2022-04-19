@@ -2,17 +2,24 @@ package com.lachlanvass.sit305lostandfoundcompose
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.RadioButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.lachlanvass.sit305lostandfoundcompose.ui.theme.SIT305LostAndFoundComposeTheme
+import kotlinx.coroutines.selects.select
 import kotlin.random.Random
 
 class CreateActivity : ComponentActivity() {
@@ -33,6 +40,25 @@ class CreateActivity : ComponentActivity() {
             var location by remember {mutableStateOf("")}
 
             Column {
+
+                var selectedButton by remember {
+                    mutableStateOf("Lost")
+                }
+
+                Row {
+
+                    val options = setOf("Lost", "Found")
+
+                    Text(text = "Post Type: ")
+                    options.forEach { option ->
+                        RadioButton(selected = selectedButton == option, onClick = {selectedButton = option })
+                        Text(text = option, modifier = Modifier
+                            .clickable(onClick = { selectedButton = option })
+                            .padding(4.dp))
+                        Spacer(modifier = Modifier.size(4.dp))
+                    }
+
+                }
                 OutlinedTextField(
                     value = name ,
                     onValueChange = {name = it},
