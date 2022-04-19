@@ -2,4 +2,5 @@
     <string name="app_name">SIT305LostAndFoundCompose</string>
     <string name="title_activity_list">ListActivity</string>
     <string name="title_activity_create">CreateActivity</string>
+    <string name="title_activity_single_post">SinglePost</string>
 </resources>

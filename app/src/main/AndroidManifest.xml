@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SIT305LostAndFoundCompose">
         <activity
+            android:name=".SinglePost"
+            android:exported="false"
+            android:label="@string/title_activity_single_post"
+            android:theme="@style/Theme.SIT305LostAndFoundCompose" />
+        <activity
             android:name=".CreateActivity"
             android:exported="false"
             android:label="@string/title_activity_create"
