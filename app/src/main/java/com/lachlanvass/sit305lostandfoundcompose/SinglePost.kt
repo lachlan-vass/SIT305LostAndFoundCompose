@@ -26,6 +26,7 @@ class SinglePost : ComponentActivity() {
         val date = intent.getStringExtra("Date") ?: "Date Unknown"
         val description = intent.getStringExtra("Description") ?: "description..."
         val location = intent.getStringExtra("Location") ?: "Location Unknown"
+        val type = intent.getStringExtra("Type") ?: "Lost"
 
         val post = Post(
             uid,
@@ -33,7 +34,8 @@ class SinglePost : ComponentActivity() {
             phone,
             description,
             date,
-            location
+            location,
+            type
         )
 
         val db = AppDatabase.getDatabase(this)

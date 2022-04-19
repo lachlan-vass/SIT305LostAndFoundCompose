@@ -11,7 +11,8 @@ data class Post(
     @ColumnInfo(name = "phone_number") val phoneNumber: String?,
     @ColumnInfo(name = "description") val description: String?,
     @ColumnInfo(name = "date") val date: String?,
-    @ColumnInfo(name = "location") val location: String?
+    @ColumnInfo(name = "location") val location: String?,
+    @ColumnInfo(name = "type") val type: String?
 )
 
 @Dao
@@ -30,7 +31,7 @@ interface PostDao {
     fun deleteById(uid: Int)
 }
 
-@Database(entities = [Post::class], version = 1)
+@Database(entities = [Post::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun postDao() : PostDao
 
@@ -42,6 +43,7 @@ abstract class AppDatabase : RoomDatabase() {
                     INSTANCE =
                         Room.databaseBuilder(context,AppDatabase::class.java, "post_database")
                             .allowMainThreadQueries()
+                            .fallbackToDestructiveMigration()
                             .build()
                 }
             }

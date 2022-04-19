@@ -97,7 +97,8 @@ class CreateActivity : ComponentActivity() {
                         phone,
                         description,
                         date,
-                        location
+                        location,
+                        selectedButton
                     )
 
                     db.postDao().insert(post)

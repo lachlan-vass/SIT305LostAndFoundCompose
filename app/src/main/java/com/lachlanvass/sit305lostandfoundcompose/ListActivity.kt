@@ -22,7 +22,6 @@ class ListActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val items = (1..50).toList()
 
         val db = AppDatabase.getDatabase(this)
         val posts = db.postDao().getAll()
@@ -54,10 +53,11 @@ class ListActivity : ComponentActivity() {
                             intent.putExtra("Date", post.date)
                             intent.putExtra("Description", post.description)
                             intent.putExtra("Location", post.location)
+                            intent.putExtra("Type", post.type)
                             context.startActivity(intent)
                         }
                     ) {
-                        Text(text = "${post.name} Posted on: ${post.date}" , modifier = Modifier.padding(10.dp))
+                        Text(text = "${post.type} ${post.name} Posted on: ${post.date}" , modifier = Modifier.padding(10.dp))
                     }
 
                 }
