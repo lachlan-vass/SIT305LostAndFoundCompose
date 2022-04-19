@@ -48,7 +48,9 @@ class ListActivity : ComponentActivity() {
                         onClick = {
 
                             val intent = Intent(context, SinglePost::class.java)
+                            intent.putExtra("UID", post.uid)
                             intent.putExtra("Name", post.name)
+                            intent.putExtra("Phone", post.name)
                             intent.putExtra("Date", post.date)
                             intent.putExtra("Description", post.description)
                             intent.putExtra("Location", post.location)

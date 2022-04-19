@@ -25,6 +25,9 @@ interface PostDao {
 
     @Delete
     fun delete(post: Post)
+
+    @Query("DELETE FROM Post WHERE uid = :uid")
+    fun deleteById(uid: Int)
 }
 
 @Database(entities = [Post::class], version = 1)
