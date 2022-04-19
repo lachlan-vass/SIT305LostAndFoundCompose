@@ -49,6 +49,9 @@ class ListActivity : ComponentActivity() {
 
                             val intent = Intent(context, SinglePost::class.java)
                             intent.putExtra("Name", post.name)
+                            intent.putExtra("Date", post.date)
+                            intent.putExtra("Description", post.description)
+                            intent.putExtra("Location", post.location)
                             context.startActivity(intent)
                         }
                     ) {

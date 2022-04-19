@@ -18,11 +18,17 @@ class SinglePost : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val name = intent.getStringExtra("Name") ?: "Name Unknown"
-
+        val date = intent.getStringExtra("Date") ?: "Date Unknown"
+        val description = intent.getStringExtra("Description") ?: "description..."
+        val location = intent.getStringExtra("Location") ?: "Location Unknown"
         setContent {
             Column {
-                
-                Text(text = name)
+
+                Text(text = "Lost and Found Post")
+                Text(text = "Name: $name")
+                Text(text = "Date: $date")
+                Text(text = "Description: $description")
+                Text(text = "Location: $location")
             }
 
         }
