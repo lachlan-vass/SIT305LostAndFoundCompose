@@ -42,7 +42,9 @@ class ListActivity : ComponentActivity() {
                         backgroundColor = MaterialTheme.colors.surface,
                         contentColor = contentColorFor(backgroundColor = MaterialTheme.colors.surface),
                         elevation = 10.dp,
-                        modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth(),
                         onClick = {
 
                             val intent = Intent(context, SinglePost::class.java)

@@ -17,7 +17,7 @@ class SinglePost : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val name = savedInstanceState?.getString("Name") ?: "Name Unknown"
+        val name = intent.getStringExtra("Name") ?: "Name Unknown"
 
         setContent {
             Column {
