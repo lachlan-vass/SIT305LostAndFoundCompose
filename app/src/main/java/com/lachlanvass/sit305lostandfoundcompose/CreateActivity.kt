@@ -2,6 +2,7 @@ package com.lachlanvass.sit305lostandfoundcompose
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.DatePicker
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -63,30 +64,40 @@ class CreateActivity : ComponentActivity() {
                     value = name ,
                     onValueChange = {name = it},
                     singleLine = true,
+                    label = { Text(text = "Name")}
                 )
 
                 OutlinedTextField(
                     value = phone ,
                     onValueChange = {phone = it},
                     singleLine = true,
+                    label = { Text(text = "Phone Number")}
+
+
                 )
 
                 OutlinedTextField(
                     value = description ,
                     onValueChange = {description = it},
                     singleLine = true,
+                    label = { Text(text = "Description")}
+
                 )
 
                 OutlinedTextField(
                     value = date ,
                     onValueChange = {date = it},
                     singleLine = true,
+                    label = { Text(text = "Date")}
+
                 )
 
                 OutlinedTextField(
                     value = location ,
                     onValueChange = {location = it},
                     singleLine = true,
+                    label = { Text(text = "Location")}
+
                 )
 
                 Button(onClick = {
