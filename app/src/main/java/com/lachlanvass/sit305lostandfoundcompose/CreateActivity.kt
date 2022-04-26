@@ -39,15 +39,8 @@ class CreateActivity : ComponentActivity() {
             var date by remember { mutableStateOf("") }
             var location by remember { mutableStateOf("") }
             var expanded by remember { mutableStateOf(false) }
-            val cityOptions = listOf("Sydney", "Brisbane", "Melbourne", "Canberra", "Perth")
+            val cityOptions = listOf("Sydney", "Brisbane", "Melbourne", "Canberra", "Perth", "Tamworth")
             var selectedCity by remember {mutableStateOf(cityOptions.first())}
-
-            val g = Geocoder(this)
-            val loca = g.getFromLocationName("Sydney", 1)
-
-//            loca.first().
-
-
 
             Column {
 
