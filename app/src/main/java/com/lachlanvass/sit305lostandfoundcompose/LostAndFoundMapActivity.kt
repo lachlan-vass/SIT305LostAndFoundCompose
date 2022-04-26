@@ -44,7 +44,9 @@ class LostAndFoundMapActivity : ComponentActivity() {
 
                             val pickUp =  LatLng(-35.016, 143.321)
                             val destination = LatLng(-32.491, 147.309)
+
                             map.moveCamera(CameraUpdateFactory.newLatLngZoom(destination,6f))
+
                             val markerOptions = MarkerOptions()
                                 .title("Sydney Opera House")
                                 .position(pickUp)
