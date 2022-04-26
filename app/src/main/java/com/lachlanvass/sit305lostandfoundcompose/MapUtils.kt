@@ -17,7 +17,7 @@ fun rememberMapViewWithLifecycle(): MapView {
 
     val mapView = remember {
         MapView(context).apply {
-            id = R.id.map
+            id = R.id.layout_map
         }
     }
 
