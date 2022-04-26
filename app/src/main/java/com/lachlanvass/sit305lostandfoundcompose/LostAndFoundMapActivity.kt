@@ -27,7 +27,10 @@ import java.util.*
 fun getLatLngFromCityName(cityName: String?): LatLng {
     return when(cityName) {
 
-        "Sydney" -> LatLng(-34.0, -151.0)
+        "Sydney" -> LatLng(-34.0, 151.0)
+        "Melbourne" -> LatLng(-37.84, 144.94)
+        "Brisbane" -> LatLng(-27.47, 153.02)
+        "Perth" -> LatLng(-31.95, 115.85)
         null -> LatLng(0.0,0.0)
         else -> LatLng(0.0,0.0)
     }
@@ -40,7 +43,9 @@ class LostAndFoundMapActivity : ComponentActivity() {
         val db = AppDatabase.getDatabase(this)
         val posts = db.postDao().getAll()
 
-        val addresses = posts.map { getLatLngFromCityName(it.location) }
+        val addresses = posts.map { it ->
+            println("Location found: ${it.location} and assigning LatLng ${getLatLngFromCityName(it.location)}")
+            getLatLngFromCityName(it.location) }
 
         setContent {
 
@@ -72,7 +77,7 @@ class LostAndFoundMapActivity : ComponentActivity() {
                                 map.addMarker(marker)
                             }
 
-                            map.moveCamera(CameraUpdateFactory.newLatLngZoom(markerCoords.first(),6f))
+                            map.moveCamera(CameraUpdateFactory.newLatLngZoom(markerCoords.first(),4f))
                         }
 
 
