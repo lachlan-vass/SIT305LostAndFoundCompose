@@ -31,6 +31,8 @@ fun getLatLngFromCityName(cityName: String?): LatLng {
         "Melbourne" -> LatLng(-37.84, 144.94)
         "Brisbane" -> LatLng(-27.47, 153.02)
         "Perth" -> LatLng(-31.95, 115.85)
+        "Canberra" -> LatLng(-35.28, 149.12)
+        "Tamworth" -> LatLng(-31.08, 150.91)
         null -> LatLng(0.0,0.0)
         else -> LatLng(0.0,0.0)
     }
