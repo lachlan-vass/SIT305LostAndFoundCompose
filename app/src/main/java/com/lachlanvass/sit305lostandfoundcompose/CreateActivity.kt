@@ -157,6 +157,4 @@ fun DefaultPreview3() {
         InputAndLabel("Date")
         InputAndLabel("Location")
     }
-
-
 }

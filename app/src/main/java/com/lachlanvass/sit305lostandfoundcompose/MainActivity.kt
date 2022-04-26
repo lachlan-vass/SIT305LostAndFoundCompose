@@ -1,6 +1,7 @@
 package com.lachlanvass.sit305lostandfoundcompose
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.lachlanvass.sit305lostandfoundcompose.ui.theme.SIT305LostAndFoundComposeTheme
 
@@ -52,6 +54,25 @@ class MainActivity : ComponentActivity() {
                     context.startActivity(intent)
                 }) {
                     Text(text = "View Lost and Found Posts")
+                }
+
+                Button(onClick = {
+                    val intent = Intent(context, LostAndFoundMapActivity::class.java)
+                    context.startActivity(intent)
+                }) {
+                    Text(text = "Show on Map")
+                }
+
+                Button(onClick = {
+
+                    val gmmIntentUri = Uri.parse("https://www.google.com/maps/dir/33.93729,-106.85761/33.91629,-106.866761/33.98729,-106.85861//@34.0593359,-106.7131944,11z")
+
+                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                    mapIntent.setPackage("com.google.android.apps.maps")
+
+                    startActivity(mapIntent)
+                }) {
+                    Text(text = "Maps webpage")
                 }
             }
         }

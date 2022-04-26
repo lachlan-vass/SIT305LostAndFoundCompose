@@ -9,6 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SIT305LostAndFoundCompose">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDb0p661wjA71gVn-1m5LoG798GDLDra0w" />
+
+        <activity
+            android:name=".LostAndFoundMapActivity"
+            android:exported="false"
+            android:label="@string/title_activity_lost_and_found_map"
+            android:theme="@style/Theme.SIT305LostAndFoundCompose"
+
+            />
         <activity
             android:name=".SinglePost"
             android:exported="false"
@@ -35,6 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
