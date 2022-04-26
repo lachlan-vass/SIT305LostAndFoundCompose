@@ -74,24 +74,4 @@ fun Greeting(name: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    SIT305LostAndFoundComposeTheme {
-        Greeting("Android")
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Create Lost and Found Post")
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "View Lost and Found Posts")
-        }
-    }
-}
+fun DefaultPreview() {}

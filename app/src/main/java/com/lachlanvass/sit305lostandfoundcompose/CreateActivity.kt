@@ -190,13 +190,6 @@ fun InputAndLabel(fieldName: String) {
     return OutlinedTextField(value = name, onValueChange = { name = it }, singleLine = true)
 }
 
-//@Composable
-//fun AustralianCityDropdown() {
-//    DropdownMenu(expanded = true, onDismissRequest = { /*TODO*/ }) {
-//
-//    }
-//}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview3() {
