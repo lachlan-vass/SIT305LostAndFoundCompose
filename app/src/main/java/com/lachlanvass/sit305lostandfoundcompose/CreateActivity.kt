@@ -132,10 +132,11 @@ class CreateActivity : ComponentActivity() {
 
                             DropdownMenuItem(onClick = {
                                 selectedCity = city
+                                location = city
                                 expanded = false
                             }) {
 
-                                Text(text = selectedCity)
+                                Text(text = city)
                             }
 
                         }
