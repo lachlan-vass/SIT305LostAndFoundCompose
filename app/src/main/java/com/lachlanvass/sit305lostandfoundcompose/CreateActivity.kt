@@ -39,8 +39,14 @@ class CreateActivity : ComponentActivity() {
             var date by remember { mutableStateOf("") }
             var location by remember { mutableStateOf("") }
             var expanded by remember { mutableStateOf(false) }
-            val cityOptions = listOf("Sydney", "Brisbane", "Melbourne", "Canberra")
-            var selectedCity by remember {mutableStateOf(cityOptions[0])}
+            val cityOptions = listOf("Sydney", "Brisbane", "Melbourne", "Canberra", "Perth")
+            var selectedCity by remember {mutableStateOf(cityOptions.first())}
+
+            val g = Geocoder(this)
+            val loca = g.getFromLocationName("Sydney", 1)
+
+//            loca.first().
+
 
 
             Column {
@@ -98,16 +104,6 @@ class CreateActivity : ComponentActivity() {
                     label = { Text(text = "Date") }
 
                 )
-
-//                OutlinedTextField(
-//                    value = location,
-//                    onValueChange = {location = it},
-//                    singleLine = true,
-//                    label = { Text(text = "Location")},
-//
-//                )
-
-
 
                 ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
                     expanded = !expanded

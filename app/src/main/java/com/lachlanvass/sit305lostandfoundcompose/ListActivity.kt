@@ -57,7 +57,7 @@ class ListActivity : ComponentActivity() {
                             context.startActivity(intent)
                         }
                     ) {
-                        Text(text = "${post.type} ${post.name} Posted on: ${post.date}" , modifier = Modifier.padding(10.dp))
+                        Text(text = "${post.type} ${post.name} Posted on: ${post.date} at ${post.location}" , modifier = Modifier.padding(10.dp))
                     }
 
                 }
