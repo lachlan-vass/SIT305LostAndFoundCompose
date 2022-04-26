@@ -1,6 +1,7 @@
 package com.lachlanvass.sit305lostandfoundcompose
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.lachlanvass.sit305lostandfoundcompose.ui.theme.SIT305LostAndFoundComposeTheme
 
@@ -53,6 +55,13 @@ class MainActivity : ComponentActivity() {
                 }) {
                     Text(text = "View Lost and Found Posts")
                 }
+
+                Button(onClick = {
+                    val intent = Intent(context, LostAndFoundMapActivity::class.java)
+                    context.startActivity(intent)
+                }) {
+                    Text(text = "Show on Map")
+                }
             }
         }
     }
@@ -65,24 +74,4 @@ fun Greeting(name: String) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    SIT305LostAndFoundComposeTheme {
-        Greeting("Android")
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "Create Lost and Found Post")
-        }
-        Button(onClick = { /*TODO*/ }) {
-            Text(text = "View Lost and Found Posts")
-        }
-    }
-}
+fun DefaultPreview() {}

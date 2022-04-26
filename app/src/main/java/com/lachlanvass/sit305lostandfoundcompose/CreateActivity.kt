@@ -1,6 +1,7 @@
 package com.lachlanvass.sit305lostandfoundcompose
 
 import android.content.Intent
+import android.location.Geocoder
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.RadioGroup
@@ -9,10 +10,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.RadioButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -24,6 +22,7 @@ import kotlinx.coroutines.selects.select
 import kotlin.random.Random
 
 class CreateActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,11 +33,14 @@ class CreateActivity : ComponentActivity() {
 
             val context = LocalContext.current
 
-            var name by remember {mutableStateOf("")}
-            var phone by remember {mutableStateOf("")}
-            var description by remember {mutableStateOf("")}
-            var date by remember {mutableStateOf("")}
-            var location by remember {mutableStateOf("")}
+            var name by remember { mutableStateOf("") }
+            var phone by remember { mutableStateOf("") }
+            var description by remember { mutableStateOf("") }
+            var date by remember { mutableStateOf("") }
+            var location by remember { mutableStateOf("") }
+            var expanded by remember { mutableStateOf(false) }
+            val cityOptions = listOf("Sydney", "Brisbane", "Melbourne", "Canberra", "Perth", "Tamworth")
+            var selectedCity by remember {mutableStateOf(cityOptions.first())}
 
             Column {
 
@@ -52,53 +54,84 @@ class CreateActivity : ComponentActivity() {
 
                     Text(text = "Post Type: ")
                     options.forEach { option ->
-                        RadioButton(selected = selectedButton == option, onClick = {selectedButton = option })
-                        Text(text = option, modifier = Modifier
-                            .clickable(onClick = { selectedButton = option })
-                            .padding(4.dp))
+                        RadioButton(
+                            selected = selectedButton == option,
+                            onClick = { selectedButton = option })
+                        Text(
+                            text = option, modifier = Modifier
+                                .clickable(onClick = { selectedButton = option })
+                                .padding(4.dp)
+                        )
                         Spacer(modifier = Modifier.size(4.dp))
                     }
 
                 }
                 OutlinedTextField(
-                    value = name ,
-                    onValueChange = {name = it},
+                    value = name,
+                    onValueChange = { name = it },
                     singleLine = true,
-                    label = { Text(text = "Name")}
+                    label = { Text(text = "Name") }
                 )
 
                 OutlinedTextField(
-                    value = phone ,
-                    onValueChange = {phone = it},
+                    value = phone,
+                    onValueChange = { phone = it },
                     singleLine = true,
-                    label = { Text(text = "Phone Number")}
+                    label = { Text(text = "Phone Number") }
 
-
-                )
-
-                OutlinedTextField(
-                    value = description ,
-                    onValueChange = {description = it},
-                    singleLine = true,
-                    label = { Text(text = "Description")}
 
                 )
 
                 OutlinedTextField(
-                    value = date ,
-                    onValueChange = {date = it},
+                    value = description,
+                    onValueChange = { description = it },
                     singleLine = true,
-                    label = { Text(text = "Date")}
+                    label = { Text(text = "Description") }
 
                 )
 
                 OutlinedTextField(
-                    value = location ,
-                    onValueChange = {location = it},
+                    value = date,
+                    onValueChange = { date = it },
                     singleLine = true,
-                    label = { Text(text = "Location")}
+                    label = { Text(text = "Date") }
 
                 )
+
+                ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
+                    expanded = !expanded
+                }) {
+
+                    TextField(
+                        readOnly = true,
+                        value = selectedCity,
+                        onValueChange = { },
+                        label = { Text("City") },
+                        trailingIcon = {
+                            ExposedDropdownMenuDefaults.TrailingIcon(
+                                expanded = expanded
+                            )
+                        },
+                        colors = ExposedDropdownMenuDefaults.textFieldColors()
+                    )
+
+                    ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+
+                        cityOptions.forEach { city ->
+
+                            DropdownMenuItem(onClick = {
+                                selectedCity = city
+                                location = city
+                                expanded = false
+                            }) {
+
+                                Text(text = city)
+                            }
+
+                        }
+                    }
+                }
+
 
                 Button(onClick = {
 
@@ -119,7 +152,7 @@ class CreateActivity : ComponentActivity() {
                     val intent = Intent(context, ListActivity::class.java)
                     context.startActivity(intent)
                 }) {
-                    
+
                     Text(text = "Save Post")
                 }
 
@@ -143,7 +176,7 @@ fun InputAndLabel(fieldName: String) {
     }
 
     Text(text = fieldName)
-    return OutlinedTextField(value = name, onValueChange = { name = it}, singleLine = true )
+    return OutlinedTextField(value = name, onValueChange = { name = it }, singleLine = true)
 }
 
 @Preview(showBackground = true)
@@ -157,6 +190,4 @@ fun DefaultPreview3() {
         InputAndLabel("Date")
         InputAndLabel("Location")
     }
-
-
 }
